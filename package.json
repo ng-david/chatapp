@@ -14,7 +14,7 @@
     "rimraf": "^2.6.1"
   },
   "scripts": {
-    "start": "nodemon src/index.js --exec babel-node",
+    "start": "nodemon -e js,html src/ --exec babel-node",
     "build": "rimraf build/ && babel src/ --out-dir build/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
     "serve": "node build/index.js"
   }
