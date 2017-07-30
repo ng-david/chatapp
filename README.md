@@ -1,6 +1,6 @@
 # chatapp
 
-  npm run build -> build production files in /build (converts es6 to es2015)
+  npm run build -> build production files from /src into /build (converts es6 to es2015)
   
   npm run serve -> serve files from /build for production use
   
