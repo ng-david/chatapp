@@ -34,9 +34,6 @@ io.on('connection', (socket) => {
 
 });
 
-io.emit('some event', { for: 'everyone' });
-
-
 http.listen(3000, () => {
   console.log('Listening on *:3000');
 });
