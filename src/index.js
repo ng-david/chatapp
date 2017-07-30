@@ -7,12 +7,15 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-  console.log('A user connected');
+  console.log('An IP connected');
   socket.on('disconnect', () => {
-    console.log('User disconnected');
+    console.log('IP disconnected');
   });
   socket.on('chat message', (msg) => {
     io.emit('chat message', msg);
+  });
+  socket.on('name submit', (name) => {
+    console.log(name);
   });
 });
 
