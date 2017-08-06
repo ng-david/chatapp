@@ -46,10 +46,11 @@ $(function() {
     $('#messages').append($('<li>').text(msg));
   });
 
-  socket.on('user list', function(list) {
+  socket.on('user list', function(users) {
     $('#activeUsers').empty();
-    for (id in list) {
-      const name = list[id].name;
+    $('#activeUsers').append($('<li>').text("Currently Active: " + Object.keys(users).length));
+    for (id in users) {
+      const name = users[id].name;
       $('#activeUsers').append($('<li>').text(name));
     }
   });

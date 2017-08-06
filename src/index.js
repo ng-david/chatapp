@@ -4,6 +4,7 @@ const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const exphbs = require('express-handlebars');
+const translate = require('google-translate-api');
 
 // Setup App
 app.use(express.static(path.join(__dirname, 'public')))
@@ -58,7 +59,16 @@ io.on('connection', (socket) => {
 
   // New Chat
   socket.on('chat message', (msg) => {
-    io.emit('chat message', `${name}: ${msg}`);
+    translate(msg, {
+      from: 'en',
+      to: 'zh-CN'
+    }).then(res => {
+      io.emit('chat message', `${name}: ${msg}`);
+      io.emit('chat message', `${name}: ${res.text}`);
+    }).catch(err => {
+      console.error(err);
+    });
+
   });
 
 });
