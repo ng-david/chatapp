@@ -39,12 +39,14 @@ io.on('connection', (socket) => {
   // User Disconnect
   socket.on('disconnect', () => {
     console.log(`EHD Connection for '${name}' (ID: ${id})`);
+    io.emit('chat message', `${name} left the chat.`)
   });
 
   // Name Chosen
   socket.on('name submit', (userName) => {
     name = userName;
     console.log(`${id} entered name '${name}'`);
+    io.emit('chat message', `${name} joined the chat.`)
   });
 
   // Chat Submitted
