@@ -1,6 +1,6 @@
 {
-  "name": "chatapp",
-  "version": "0.0.1",
+  "name": "ChenChat",
+  "version": "0.8",
   "description": "A Socket.io powered webapp",
   "dependencies": {
     "express": "^4.15.2",
