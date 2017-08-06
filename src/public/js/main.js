@@ -29,16 +29,29 @@ $(function() {
   // Chat Form
   // When chat is submitted, clear it and emit the message
   $('#chatInput').submit(function() {
-    // If there isnt a name, this will return true and therefore reload the page to bring up the modal again
+    const msg = $('#m').val();
     if (isLoggedIn) {
-      socket.emit('chat message', $('#m').val());
-      $('#m').val('');
+      if (msg !== "") {
+        socket.emit('chat message', msg);
+        $('#m').val('');
+      }
       return false;
     }
+    // Cause page reload of user not logged in
     return true;
   });
+
   // When chat message received, append to box
   socket.on('chat message', function(msg) {
     $('#messages').append($('<li>').text(msg));
   });
+
+  socket.on('user list', function(list) {
+    $('#activeUsers').empty();
+    for (id in list) {
+      const name = list[id].name;
+      $('#activeUsers').append($('<li>').text(name));
+    }
+  });
+
 });

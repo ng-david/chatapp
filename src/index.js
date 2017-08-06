@@ -22,6 +22,7 @@ http.listen(3000, () => {
 
 // Global Variables
 let connections = 0;
+let users = {};
 
 // Initial get
 app.get('/', (req, res) => {
@@ -38,21 +39,27 @@ io.on('connection', (socket) => {
 
   // User Disconnect
   socket.on('disconnect', () => {
+    delete users[id];
     console.log(`EHD Connection for '${name}' (ID: ${id})`);
     io.emit('chat message', `${name} left the chat.`)
+    io.emit('user list', users);
   });
 
   // Name Chosen
   socket.on('name submit', (userName) => {
     name = userName;
+    users[id] = { "name": userName }; // Add to database
     console.log(`${id} entered name '${name}'`);
     io.emit('chat message', `${name} joined the chat.`)
+    io.emit('user list', users);
   });
 
   // Chat Submitted
   socket.on('chat message', (msg) => {
     io.emit('chat message', `${name}: ${msg}`);
   });
+
+
 
 });
 
