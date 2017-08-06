@@ -1,4 +1,4 @@
-# chatapp
+# ChenChat
 
   npm run build -> build production files from /src into /build (converts from es6 to es2015)
 
