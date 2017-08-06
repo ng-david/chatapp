@@ -1,11 +1,31 @@
-const app = require('express')();
+const path = require('path');
+const express = require('express');
+const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
+const exphbs = require('express-handlebars');
 
+// Setup App
+app.use(express.static(path.join(__dirname, 'public')))
+// Set up views + view engine to be handlebars
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'handlebars');
+app.engine('handlebars', exphbs({
+  layoutsDir: path.join(__dirname, 'views/layouts'),
+  defaultLayout: 'main',
+}));
+
+// Run Server
+http.listen(3000, () => {
+  console.log('Listening on *:3000');
+});
+
+// Global Variables
 let connections = 0;
 
+// Initial get
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  res.render('chat');
 });
 
 // When a user connects to app
@@ -34,10 +54,7 @@ io.on('connection', (socket) => {
 
 });
 
-http.listen(3000, () => {
-  console.log('Listening on *:3000');
-});
-
+// Helper functions
 function getNewId() {
   return ++connections;
 }
