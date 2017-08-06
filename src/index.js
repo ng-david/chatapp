@@ -38,13 +38,13 @@ io.on('connection', (socket) => {
 
   // User Disconnect
   socket.on('disconnect', () => {
-    console.log(`EHD Connection for ${name} (ID: ${id})`);
+    console.log(`EHD Connection for '${name}' (ID: ${id})`);
   });
 
   // Name Chosen
   socket.on('name submit', (userName) => {
     name = userName;
-    console.log(`${id} entered name ${name}`);
+    console.log(`${id} entered name '${name}'`);
   });
 
   // Chat Submitted
