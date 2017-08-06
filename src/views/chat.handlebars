@@ -1,17 +1,21 @@
 <div id="loginModal" class="login-modal">
   <h1>Welcome to ChenChat</h1>
   <p>欢迎来到 ChenChat</p>
+  <div id="err" class="err">
+    <p>Please enter a valid name.</p>
+    <p>请输入一个有效的名字。</p>
+  </div>
   <p id="err" class="err">Please enter a valid name.</p>
-  <form id="nameInput" action="">
+  <form id="login" action="">
     <label for="name">Name (名称):</label>
     <input autofocus id="name" autocomplete="off">
     <br>
-    <label for="userLanguage">Language (语言):</label>
+    <label>Language (语言):</label>
     <br>
-    <input type="radio" name="language" value="en" checked>English
-    <input type="radio" name="language" value="zh-CN">中文
+    <input type="radio" name="lang" value="en" checked>English
+    <input type="radio" name="lang" value="zh-CN">中文
     <br>
-    <button>Start</button>
+    <button>Start (开始)</button>
   </form>
 </div>
 <div id="overlay" class="overlay"></div>
@@ -19,7 +23,7 @@
 <ul id="messages"></ul>
 <form id="chatInput" action="">
   <input id="m" autocomplete="off">
-  <button>Send</button>
+  <button>Send (开始)</button>
 </form>
 
 <div>

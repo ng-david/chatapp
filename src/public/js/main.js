@@ -7,8 +7,9 @@ $(function() {
   socket = io();
 
   // Login Form
-  $('#nameInput').submit(function() {
+  $('#login').submit(function() {
     const name = $('#name').val();
+    const lang = $('input:radio[name=lang]:checked').val();
     const err = $('#err');
     const modal = $('#loginModal');
     const overlay = $('#overlay');
@@ -20,7 +21,7 @@ $(function() {
       err.css("display", "none");
       modal.css("display", "none");
       overlay.css("display", "none");
-      socket.emit('name submit', name);
+      socket.emit('login', { name: name, lang: lang });
       $('#m').focus();
     }
     // Prevent page reload

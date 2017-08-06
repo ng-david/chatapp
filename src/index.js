@@ -40,18 +40,23 @@ io.on('connection', (socket) => {
 
   // User Disconnect
   socket.on('disconnect', () => {
-    delete users[id]; // Remove from database
-    console.log(`EHD Connection for '${name}' (ID: ${id})`);
-    io.emit('chat message', `${name} left the chat.`)
-    io.emit('user list', users);
-    printActiveUsers();
+    if (users[id]) {
+      console.log(`EHD Connection for '${users[id].name}' (ID: ${id}) with lang '${users[id].lang}'`);
+      io.emit('chat message', `${users[id].name} left the chat.`)
+
+      delete users[id]; // Remove from database
+      io.emit('user list', users);
+      printActiveUsers();
+    }
   });
 
   // Name Chosen
-  socket.on('name submit', (userName) => {
-    name = userName;
-    users[id] = { "name": userName }; // Add to database
-    console.log(`${id} entered name '${name}'`);
+  socket.on('login', (user) => {
+    let lang = user.lang;
+    name = user.name;
+    users[id] = { name: name, lang: lang }; // Add to database
+
+    console.log(`${id} entered name '${name}' with lang '${lang}'`);
     io.emit('chat message', `${name} joined the chat.`)
     io.emit('user list', users);
     printActiveUsers();
@@ -59,16 +64,17 @@ io.on('connection', (socket) => {
 
   // New Chat
   socket.on('chat message', (msg) => {
-    translate(msg, {
-      from: 'en',
-      to: 'zh-CN'
-    }).then(res => {
-      io.emit('chat message', `${name}: ${msg}`);
-      io.emit('chat message', `${name}: ${res.text}`);
-    }).catch(err => {
-      console.error(err);
-    });
-
+    if (users[id]) {
+      translate(msg, {
+        from: users[id].lang,
+        to: (users[id].lang === 'en' ? 'zh-CN' : 'en')
+      }).then(res => {
+        io.emit('chat message', `${name}: ${msg}`);
+        io.emit('chat message', `${name}: ${res.text}`);
+      }).catch(err => {
+        console.error(err);
+      });
+    }
   });
 
 });
