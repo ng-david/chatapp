@@ -1,9 +1,16 @@
 <div id="loginModal" class="login-modal">
-  <h1>Enter your name.</h1>
+  <h1>Welcome to ChenChat</h1>
+  <p>欢迎来到 ChenChat</p>
   <p id="err" class="err">Please enter a valid name.</p>
   <form id="nameInput" action="">
-    <label for="name">Name:</label>
+    <label for="name">Name (名称):</label>
     <input autofocus id="name" autocomplete="off">
+    <br>
+    <label for="userLanguage">Language (语言):</label>
+    <br>
+    <input type="radio" name="language" value="en" checked>English
+    <input type="radio" name="language" value="zh-CN">中文
+    <br>
     <button>Start</button>
   </form>
 </div>
@@ -11,12 +18,10 @@
 
 <ul id="messages"></ul>
 <form id="chatInput" action="">
-  <input autofocus id="m" autocomplete="off">
+  <input id="m" autocomplete="off">
   <button>Send</button>
 </form>
 
 <div>
-  <ul id="activeUsers" class="active-users">
-    
-  </ul>
+  <ul id="activeUsers" class="active-users"></ul>
 </div>

@@ -21,6 +21,7 @@ $(function() {
       modal.css("display", "none");
       overlay.css("display", "none");
       socket.emit('name submit', name);
+      $('#m').focus();
     }
     // Prevent page reload
     return false;
