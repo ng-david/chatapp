@@ -39,10 +39,11 @@ io.on('connection', (socket) => {
 
   // User Disconnect
   socket.on('disconnect', () => {
-    delete users[id];
+    delete users[id]; // Remove from database
     console.log(`EHD Connection for '${name}' (ID: ${id})`);
     io.emit('chat message', `${name} left the chat.`)
     io.emit('user list', users);
+    printActiveUsers();
   });
 
   // Name Chosen
@@ -52,18 +53,21 @@ io.on('connection', (socket) => {
     console.log(`${id} entered name '${name}'`);
     io.emit('chat message', `${name} joined the chat.`)
     io.emit('user list', users);
+    printActiveUsers();
   });
 
-  // Chat Submitted
+  // New Chat
   socket.on('chat message', (msg) => {
     io.emit('chat message', `${name}: ${msg}`);
   });
-
-
 
 });
 
 // Helper functions
 function getNewId() {
   return ++connections;
+}
+
+function printActiveUsers() {
+  console.log(`TOTAL ACTIVE: ${Object.keys(users).length}`)
 }
