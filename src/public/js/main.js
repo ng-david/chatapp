@@ -1,4 +1,3 @@
-
 // Main
 $(function() {
   let socket, isLoggedIn;
@@ -49,12 +48,14 @@ $(function() {
   });
 
   socket.on('user list', function(users) {
+
+    const count = Object.keys(users).length;
+    $('#activeCount').text(count);
+
     $('#activeUsers').empty();
-    $('#activeUsers').append($('<li>').text("Currently Active: " + Object.keys(users).length));
-    for (id in users) {
+    for (const id in users) {
       const name = users[id].name;
-      $('#activeUsers').append($('<li>').text(name));
+      $('#activeUsers').append($('<li class="name">').text(name));
     }
   });
-
 });

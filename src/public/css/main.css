@@ -1,53 +1,106 @@
 /** { margin: 0; padding: 0; box-sizing: border-box; }
 body { font: 13px Helvetica, Arial; }
 form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+form input { border: 0; padding: 1rem; width: 90%; margin-right: .5%; }
+form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 1rem; }
 #messages { list-style-type: none; margin: 0; padding: 0; }
-#messages li { padding: 5px 10px; }
+#messages li { padding: 5px 1rem; }
 #messages li:nth-child(odd) { background: #eee; }*/
-
-@import url('https://fonts.googleapis.com/css?family=Catamaran');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
+html {
+  font-size: 62.5%; }
 
 body {
-  font-family: 'Catamaran', sans-serif;
-  color: #000;
-}
+  font-family: 'Open Sans', sans-serif;
+  color: #000000;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  font-weight: 400; }
+
+button {
+  font-size: 1.6rem; }
+
+h1, h2, h3, h4, h5, h6, p, li {
+  line-height: 1.5; }
 
 h1 {
   font-weight: bold;
-  font-size: 30px;
-}
+  font-size: 3rem; }
+
 h2 {
   font-size: 24px;
-  color: #808080;
-}
+  color: #333; }
 
-.err {
-  display: none;
-  color: red;
-}
-.heading {
-  margin-bottom: 40px;
-}
+.btn-primary {
+  transition: ease all .1s;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 1.2rem 2.4rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #e10000;
+  cursor: pointer; }
+  .btn-primary:focus, .btn-primary:active {
+    outline: none;
+    box-shadow: none; }
+  .btn-primary:hover {
+    background-color: #ff3a3a; }
+  .btn-primary:active {
+    background-color: #b80000; }
+  .btn-primary:focus {
+    background-color: #ff3a3a; }
+
 .login-modal {
-  width: 500px;
-  padding: 40px;
+  width: 50rem;
+  max-width: 90%;
+  border-radius: 4px;
+  padding: 4rem;
   border: 1px solid #e3e3e3;
   position: absolute;
-  margin: 60px auto;
+  margin: 6rem auto;
   left: 0;
   right: 0;
   z-index: 100;
-  background-color: white;
-}
-.login-modal input {
-  //width: 100%;
-  border-radius: 4px;
-  border: 1px solid #e3e3e3;
-  height: 30px;
-  margin-bottom: 20px;
-}
+  background-color: white; }
+  .login-modal .err {
+    display: none;
+    color: red; }
+  .login-modal .heading {
+    margin-bottom: 4rem; }
+  .login-modal .name-section {
+    margin-bottom: 2rem; }
+  .login-modal .lang-section {
+    margin-bottom: 3rem; }
+    .login-modal .lang-section .lang-option {
+      cursor: pointer;
+      font-weight: 500;
+      margin-bottom: 1rem; }
+    .login-modal .lang-section input {
+      margin-right: 1rem; }
+  .login-modal .section-label {
+    display: block;
+    font-weight: bold;
+    color: #000000;
+    text-transform: uppercase;
+    margin-bottom: 1rem; }
+  .login-modal .form-control {
+    height: 4rem;
+    width: 100%;
+    padding: 2rem 1rem;
+    color: #000000;
+    border-radius: 4px;
+    border: 1px solid #e3e3e3;
+    margin-bottom: 2rem;
+    font-size: 1.6rem; }
+    .login-modal .form-control:hover {
+      border-color: #ff3a3a; }
+    .login-modal .form-control:active, .login-modal .form-control:focus {
+      outline: none;
+      border-color: #e10000; }
+  .login-modal button {
+    width: 100%; }
+
 .overlay {
   position: fixed;
   top: 0;
@@ -55,5 +108,57 @@ h2 {
   bottom: 0;
   left: 0;
   z-index: 10;
-  background-color: rgba(0, 0, 0, .5);
-}
+  background-color: rgba(0, 0, 0, 0.6); }
+
+.sidebar {
+  overflow-y: scroll;
+  width: 260px;
+  height: 100%;
+  background-color: #ffffff;
+  border-right: 1px solid #e3e3e3;
+  position: absolute;
+  left: 0;
+  top: 0; }
+  .sidebar .content {
+    padding: 2rem; }
+    .sidebar .content h2 {
+      margin-bottom: 2rem;
+      font-weight: bold; }
+    .sidebar .content h4 {
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 1rem; }
+    .sidebar .content ul {
+      list-style: none;
+      padding: 0; }
+    .sidebar .content .name {
+      margin-bottom: 1rem; }
+      .sidebar .content .name:before {
+        content: '';
+        display: inline-block;
+        width: 1rem;
+        border-radius: 50%;
+        height: 1rem;
+        background-color: #3dd700;
+        margin-right: 5px; }
+
+.main {
+  left: 260px;
+  width: calc(100% - 260px);
+  height: 100vh;
+  position: relative;
+  display: block;
+  background-color: #f7f7f7; }
+  .main .input-section {
+    bottom: 0;
+    border-top: 1px solid #e3e3e3;
+    position: absolute;
+    background-color: #ffffff;
+    padding: 2rem;
+    width: 100%; }
+    .main .input-section input, .main .input-section textarea {
+      width: 100%; }
+  .main button {
+    position: absolute;
+    right: 20px;
+    bottom: 20px; }
