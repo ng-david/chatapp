@@ -2,7 +2,7 @@
 <div id="loginModal" class="login-modal">
   <div class="heading">
     <h1>Welcome to Chinglish.</h1>
-    <h2>欢迎来到中式英语。</h2>
+    <h2 class="zh-CN">欢迎来到中式英语。</h2>
   </div>
   <div id="err" class="err">
     <p>Please enter a valid name.</p>
@@ -12,12 +12,12 @@
   <form id="login" action="">
 
     <div class="name-section form-group">
-      <label class="section-label" for="name">Name / 名称 :</label>
+      <label class="section-label" for="name">Name <span class="zh-CN">名称</span> :</label>
       <input class="form-control" autofocus id="name" autocomplete="off">
     </div>
 
     <div class="lang-section">
-      <label class="section-label" >Your Language / 你的语言 :</label>
+      <label class="section-label" >Your Language <span class="zh-CN">你的语言</span> :</label>
       <label class="lang-option">
         <input type="radio" name="lang" value="en" checked>ENGLISH
       </label>
@@ -27,7 +27,7 @@
       </label>
     </div>
 
-    <button class="btn btn-primary">Start / 开始</button>
+    <button class="btn btn-primary">Start 开始</button>
   </form>
 </div>
 <div id="overlay" class="overlay"></div>
@@ -35,18 +35,18 @@
 <!-- Main -->
 <div class="sidebar">
   <div class="content">
-    <h2>Chinglish</h2>
-    <h4>Active Users<span style="float:right" id="activeCount"></span></h4>
+    <h2>Chinglish <span class="zh-CN">中式英语</span></h2>
+    <h4>Active <span class="zh-CN">活性</span><span class="active-count" id="activeCount"></span></h4>
     <ul id="activeUsers" class="active-users"></ul>
   </div>
 </div>
 
 <div class="main">
-  <ul id="messages"></ul>
+  <ul id="messages" class="msg-container"></ul>
   <form id="chatInput" action="">
     <div class="input-section">
-      <input id="m">
-      <button>Send (开始)</button>
+      <input class="form-control" id="m">
+      <button><img src="/img/send.png" alt=""></button>
     </div>
   </form>
 </div>

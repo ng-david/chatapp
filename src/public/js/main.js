@@ -44,7 +44,8 @@ $(function() {
 
   // When chat message received, append to box
   socket.on('chat message', function(msg) {
-    $('#messages').append($('<li>').text(msg));
+    $('#messages').append($('<li class="msg-line">').text(msg));
+    $("#messages").scrollTop($("#messages")[0].scrollHeight);
   });
 
   socket.on('user list', function(users) {
