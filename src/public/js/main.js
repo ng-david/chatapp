@@ -1,9 +1,13 @@
 // Main
 $(function() {
-  let socket, isLoggedIn;
+  let socket, isLoggedIn, id;
 
   // Initialize io
   socket = io();
+  // Receive id
+  socket.on('id', function(givenId) {
+    id = givenId;
+  });
 
   // Login Form
   $('#login').submit(function() {
@@ -43,8 +47,29 @@ $(function() {
   });
 
   // When chat message received, append to box
-  socket.on('chat message', function(msg) {
-    $('#messages').append($('<li class="msg-line">').text(msg));
+  socket.on('chat message', function(msgData) {
+    // If sender is this client
+    if (msgData.id === id) {
+      $('#messages').append($('<li class="my-msg">').html(
+        "<span class=\"name\">"
+        + msgData.name +
+        "</span><div class=\"\">"
+        + msgData.msg +
+        "</div><div class=\"\">"
+        + msgData.tMsg +
+        "</div>"
+      )).append($('<div style=\"clear:both\">'));
+    } else {
+      $('#messages').append($('<li class="their-msg">').html(
+        "<span class=\"name\">"
+        + msgData.name +
+        "</span><div class=\"\">"
+        + msgData.msg +
+        "</div><div class=\"\">"
+        + msgData.tMsg +
+        "</div>"
+      )).append($('<div style=\"clear:both\">'));
+    }
     $("#messages").scrollTop($("#messages")[0].scrollHeight);
   });
 

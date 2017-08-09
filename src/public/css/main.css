@@ -157,10 +157,35 @@ h2 {
   display: block;
   background-color: #f7f7f7; }
   .main .msg-container {
+    list-style: none;
+    padding-left: 0;
     height: calc(100% - 8.3rem);
-    overflow: auto; }
-    .main .msg-container .msg-line:hover {
-      background-color: white; }
+    overflow: auto;
+    padding: 2rem 2rem 0; }
+    .main .msg-container .name {
+      color: #333;
+      position: absolute; }
+    .main .msg-container .msg, .main .msg-container .their-msg, .main .msg-container .my-msg {
+      position: relative;
+      max-width: 60%;
+      margin-bottom: 4rem;
+      padding: 2rem;
+      border-radius: 4px;
+      clear: both;
+      border: 1px solid #e3e3e3; }
+    .main .msg-container .their-msg {
+      background-color: #ffffff;
+      float: left; }
+      .main .msg-container .their-msg .name {
+        left: 0rem;
+        top: -3rem; }
+    .main .msg-container .my-msg {
+      background-color: #e10000;
+      color: #ffffff;
+      float: right; }
+      .main .msg-container .my-msg .name {
+        right: 0rem;
+        top: -3rem; }
   .main .input-section {
     bottom: 0;
     border-top: 1px solid #e3e3e3;

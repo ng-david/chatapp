@@ -37,6 +37,7 @@ io.on('connection', (socket) => {
 
   // User Connect
   console.log(`NEW Connection (ID: ${id})`);
+  socket.emit('id', id);
 
   // User Disconnect
   socket.on('disconnect', () => {
@@ -57,7 +58,7 @@ io.on('connection', (socket) => {
     users[id] = { name: name, lang: lang }; // Add to database
 
     console.log(`${id} entered name '${name}' with lang '${lang}'`);
-    io.emit('chat message', `${name} joined the chat.`)
+    io.emit('chat message', `${name} joined the chat.`)                         // this gonna be busted
     io.emit('user list', users);
     printActiveUsers();
   });
@@ -69,8 +70,12 @@ io.on('connection', (socket) => {
         from: users[id].lang,
         to: (users[id].lang === 'en' ? 'zh-CN' : 'en')
       }).then(res => {
-        io.emit('chat message', `${name}: ${msg}`);
-        io.emit('chat message', `${name}: ${res.text}`);
+        io.emit('chat message', {
+          name: name,
+          id: id,
+          msg: msg,
+          tMsg: res.text
+        });
       }).catch(err => {
         console.error(err);
       });

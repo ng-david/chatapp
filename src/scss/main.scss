@@ -187,15 +187,46 @@ h2 {
   position: relative;
   display: block;
   background-color: $lightgrey;
-  .msg-container {
-    height: calc(100% - 8.3rem);
-    overflow: auto;
-    .msg-line {
-      &:hover {
-        background-color: white;
+
+    .msg-container {
+      list-style: none;
+      padding-left: 0;
+      height: calc(100% - 8.3rem);
+      overflow: auto;
+      padding: 2rem 2rem 0;
+      .name {
+        color: $darkgrey;
+        position: absolute;
+      }
+      .msg {
+        position: relative;
+        max-width: 60%;
+        margin-bottom: 4rem;
+        padding: 2rem;
+        border-radius: 4px;
+        clear: both;
+        border: 1px solid #e3e3e3;
+      }
+      .their-msg {
+        @extend .msg;
+        background-color: $white;
+        float: left;
+        .name {
+          left: 0rem;
+          top: -3rem;
+        }
+      }
+      .my-msg {
+        @extend .msg;
+        background-color: $cc-red;
+        color: $white;
+        float: right;
+        .name {
+          right: 0rem;
+          top: -3rem;
+        }
       }
     }
-  }
   .input-section {
     bottom: 0;
     border-top: 1px solid #e3e3e3;
