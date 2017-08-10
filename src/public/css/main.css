@@ -165,11 +165,13 @@ h2 {
     .main .msg-container .name {
       color: #333;
       position: absolute; }
+    .main .msg-container .login-msg {
+      color: #808080;
+      text-align: center; }
     .main .msg-container .msg, .main .msg-container .their-msg, .main .msg-container .my-msg {
       position: relative;
       max-width: 60%;
-      margin-bottom: 4rem;
-      padding: 2rem;
+      padding: 1.5rem;
       border-radius: 4px;
       clear: both;
       border: 1px solid #e3e3e3; }

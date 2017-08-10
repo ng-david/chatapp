@@ -1,6 +1,6 @@
 // Main
 $(function() {
-  let socket, isLoggedIn, id;
+  let socket, isLoggedIn, id, lastMsgId;
 
   // Initialize io
   socket = io();
@@ -48,12 +48,30 @@ $(function() {
 
   // When chat message received, append to box
   socket.on('chat message', function(msgData) {
-    // If sender is this client
-    if (msgData.id === id) {
+    // If sender is this client && last msg was from same person
+    if (msgData.id === id && lastMsgId === msgData.id) {
+      $('#messages').append($('<li class="my-msg">').html(
+        "<div class=\"\">"
+        + msgData.msg +
+        "</div><div class=\"\">"
+        + msgData.tMsg +
+        "</div>"
+      )).append($('<div style=\"clear:both\">'));
+    // Else if sender is client
+    } else if (msgData.id === id) {
       $('#messages').append($('<li class="my-msg">').html(
         "<span class=\"name\">"
         + msgData.name +
         "</span><div class=\"\">"
+        + msgData.msg +
+        "</div><div class=\"\">"
+        + msgData.tMsg +
+        "</div>"
+      )).append($('<div style=\"clear:both\">'));
+    // Else if sender not client && last msg was from same person
+    } else if (lastMsgId === msgData.id) {
+      $('#messages').append($('<li class="their-msg">').html(
+        "<div class=\"\">"
         + msgData.msg +
         "</div><div class=\"\">"
         + msgData.tMsg +
@@ -71,10 +89,14 @@ $(function() {
       )).append($('<div style=\"clear:both\">'));
     }
     $("#messages").scrollTop($("#messages")[0].scrollHeight);
+    lastMsgId = msgData.id;
+  });
+
+  socket.on('login msg', function(msg) {
+    $('#messages').append($('<li class="login-msg">').text(msg));
   });
 
   socket.on('user list', function(users) {
-
     const count = Object.keys(users).length;
     $('#activeCount').text(count);
 

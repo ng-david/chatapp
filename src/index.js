@@ -43,7 +43,7 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     if (users[id]) {
       console.log(`EHD Connection for '${users[id].name}' (ID: ${id}) with lang '${users[id].lang}'`);
-      io.emit('chat message', `${users[id].name} left the chat.`)
+      io.emit('login msg', `${users[id].name} left the chat. ${users[id].name} 离开聊天。`)
 
       delete users[id]; // Remove from database
       io.emit('user list', users);
@@ -58,7 +58,7 @@ io.on('connection', (socket) => {
     users[id] = { name: name, lang: lang }; // Add to database
 
     console.log(`${id} entered name '${name}' with lang '${lang}'`);
-    io.emit('chat message', `${name} joined the chat.`)                         // this gonna be busted
+    io.emit('login msg', `${name} joined the chat. ${name} 加入聊天。`)
     io.emit('user list', users);
     printActiveUsers();
   });
