@@ -98,7 +98,8 @@ $(function() {
   // Update the active users' list
   socket.on('user list', function(users) {
     const count = Object.keys(users).length;
-    $('#activeCount').text(count);
+    $('span.active-count').text(count);
+
 
     $('#activeUsers').empty();
     for (const id in users) {
@@ -107,3 +108,11 @@ $(function() {
     }
   });
 });
+
+function toggleSidebar() {
+  if ($('#sidebar').hasClass("mobile-show")) {
+    $('#sidebar').removeClass("mobile-show");
+  } else {
+    $('#sidebar').addClass("mobile-show");
+  }
+}
