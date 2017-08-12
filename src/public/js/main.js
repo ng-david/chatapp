@@ -48,54 +48,54 @@ $(function() {
 
   // When chat message received, append to box
   socket.on('chat message', function(msgData) {
-    // If sender is this client && last msg was from same person
+    // Not first msg for sender is client
+    // Doesn't show name
     if (msgData.id === id && lastMsgId === msgData.id) {
-      $('#messages').append($('<li class="my-msg">').html(
-        "<div class=\"\">"
-        + msgData.msg +
-        "</div><div class=\"\">"
-        + msgData.tMsg +
-        "</div>"
-      )).append($('<div style=\"clear:both\">'));
-    // Else if sender is client
+      $('#messages')
+      .append($('<li class="my-msg">').html(
+        "<div>" + msgData.msg + "</div>"
+        + "<div>" + msgData.tMsg + "</div>"
+      ))
+    // First msg for sender is client
+    // Shows name above chat bubble
     } else if (msgData.id === id) {
-      $('#messages').append($('<li class="my-msg">').html(
-        "<span class=\"name\">"
-        + msgData.name +
-        "</span><div class=\"\">"
-        + msgData.msg +
-        "</div><div class=\"\">"
-        + msgData.tMsg +
-        "</div>"
-      )).append($('<div style=\"clear:both\">'));
-    // Else if sender not client && last msg was from same person
+      $('#messages')
+      .append($('<li class="my-name">').text(msgData.name))
+      .append($('<li class="my-msg">').html(
+        "<div>" + msgData.msg + "</div>"
+        + "<div>" + msgData.tMsg + "</div>"
+      ))
+    // Not first msg for sender is other
+    // Don't show name
     } else if (lastMsgId === msgData.id) {
-      $('#messages').append($('<li class="their-msg">').html(
-        "<div class=\"\">"
-        + msgData.msg +
-        "</div><div class=\"\">"
-        + msgData.tMsg +
-        "</div>"
-      )).append($('<div style=\"clear:both\">'));
+      $('#messages')
+      .append($('<li class="their-msg">').html(
+        "<div>" + msgData.msg + "</div>"
+        + "<div>" + msgData.tMsg + "</div>"
+
+      ))
+    // First msg for sender is other
+    // Show name
     } else {
-      $('#messages').append($('<li class="their-msg">').html(
-        "<span class=\"name\">"
-        + msgData.name +
-        "</span><div class=\"\">"
-        + msgData.msg +
-        "</div><div class=\"\">"
-        + msgData.tMsg +
-        "</div>"
-      )).append($('<div style=\"clear:both\">'));
+      $('#messages')
+      .append($('<li class="their-name">').text(msgData.name))
+      .append($('<li class="their-msg">').html(
+        "<div>" + msgData.msg + "</div>"
+        + "<div>" + msgData.tMsg + "</div>"
+      ))
     }
-    $("#messages").scrollTop($("#messages")[0].scrollHeight);
+    $("#messages")
+    .append($('<div style=\"clear:both\">'))
+    .scrollTop($("#messages")[0].scrollHeight); // Scroll to bottom of chat
     lastMsgId = msgData.id;
   });
 
+  // Displays login message when new users join
   socket.on('login msg', function(msg) {
     $('#messages').append($('<li class="login-msg">').text(msg));
   });
 
+  // Update the active users' list
   socket.on('user list', function(users) {
     const count = Object.keys(users).length;
     $('#activeCount').text(count);

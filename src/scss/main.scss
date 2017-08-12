@@ -203,10 +203,25 @@ h2 {
         color: $grey;
         text-align: center;
       }
+      .name {
+        position: relative;
+        margin-bottom: .5rem;
+        clear: both;
+        font-weight: bold;
+      }
+      .my-name {
+        @extend .name;
+        float: right;
+      }
+      .their-name {
+        @extend .name;
+        float: left;
+      }
+
       .msg {
         position: relative;
         max-width: 60%;
-        //margin-bottom: 4rem;
+        margin-bottom: .25rem;
         padding: 1.5rem;
         border-radius: 4px;
         clear: both;
@@ -216,20 +231,12 @@ h2 {
         @extend .msg;
         background-color: $white;
         float: left;
-        .name {
-          left: 0rem;
-          top: -3rem;
-        }
       }
       .my-msg {
         @extend .msg;
         background-color: $cc-red;
         color: $white;
         float: right;
-        .name {
-          right: 0rem;
-          top: -3rem;
-        }
       }
     }
   .input-section {

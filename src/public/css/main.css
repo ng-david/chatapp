@@ -138,9 +138,9 @@ h2 {
       padding: 0; }
     .sidebar .content .active-count {
       float: right; }
-    .sidebar .content .name {
+    .sidebar .content .name, .sidebar .content .main .msg-container .my-name, .main .msg-container .sidebar .content .my-name, .sidebar .content .main .msg-container .their-name, .main .msg-container .sidebar .content .their-name {
       margin-bottom: 1rem; }
-      .sidebar .content .name:before {
+      .sidebar .content .name:before, .sidebar .content .main .msg-container .my-name:before, .main .msg-container .sidebar .content .my-name:before, .sidebar .content .main .msg-container .their-name:before, .main .msg-container .sidebar .content .their-name:before {
         content: '';
         display: inline-block;
         width: 1rem;
@@ -162,15 +162,25 @@ h2 {
     height: calc(100% - 8.3rem);
     overflow: auto;
     padding: 2rem 2rem 0; }
-    .main .msg-container .name {
+    .main .msg-container .name, .main .msg-container .my-name, .main .msg-container .their-name {
       color: #333;
       position: absolute; }
     .main .msg-container .login-msg {
       color: #808080;
       text-align: center; }
+    .main .msg-container .name, .main .msg-container .my-name, .main .msg-container .their-name {
+      position: relative;
+      margin-bottom: .5rem;
+      clear: both;
+      font-weight: bold; }
+    .main .msg-container .my-name {
+      float: right; }
+    .main .msg-container .their-name {
+      float: left; }
     .main .msg-container .msg, .main .msg-container .their-msg, .main .msg-container .my-msg {
       position: relative;
       max-width: 60%;
+      margin-bottom: .25rem;
       padding: 1.5rem;
       border-radius: 4px;
       clear: both;
@@ -178,16 +188,10 @@ h2 {
     .main .msg-container .their-msg {
       background-color: #ffffff;
       float: left; }
-      .main .msg-container .their-msg .name {
-        left: 0rem;
-        top: -3rem; }
     .main .msg-container .my-msg {
       background-color: #e10000;
       color: #ffffff;
       float: right; }
-      .main .msg-container .my-msg .name {
-        right: 0rem;
-        top: -3rem; }
   .main .input-section {
     bottom: 0;
     border-top: 1px solid #e3e3e3;
