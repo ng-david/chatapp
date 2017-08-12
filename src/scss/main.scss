@@ -86,11 +86,20 @@ h2 {
   right: 0;
   z-index: 100;
   background-color: white;
+  .heading-logo {
+    width: 60px;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    padding-bottom: 2rem;
+
+  }
   .err {
     display: none;
     color: red;
   }
   .heading {
+    text-align: center;
     margin-bottom: 4rem;
   }
   .name-section {
@@ -145,7 +154,9 @@ h2 {
   .content {
     padding: 2rem;
     h2 {
+      padding-bottom: 2rem;
       margin-bottom: 2rem;
+      border-bottom: 1px solid #e3e3e3;
     }
     h4 {
       text-transform: uppercase;
@@ -155,6 +166,12 @@ h2 {
     ul {
       list-style: none;
       padding: 0;
+    }
+    .sidebar-logo {
+      width: 40px;
+      margin: 0 auto;
+      margin-bottom: 2rem;
+      display: block;
     }
     .active-count {
       float: right;
@@ -187,6 +204,9 @@ h2 {
       -moz-box-shadow: -10px 0px 80px 0px rgba(0,0,0,0.05);
       box-shadow: -10px 0px 80px 0px rgba(0,0,0,0.05);
       right: 0px;
+    }
+    h2 {
+      display: none;
     }
   }
 }
