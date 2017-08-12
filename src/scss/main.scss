@@ -39,7 +39,7 @@ h2 {
   padding: 2rem 1rem;
   color: $black;
   border-radius: 4px;
-  border: 1px solid #e3e3e3;
+  border: 1px solid $border-grey;
   margin-bottom: 2rem;
   font-size: 1.6rem;
   &:hover {
@@ -79,7 +79,7 @@ h2 {
   max-width: 90%;
   border-radius: 4px;
   padding: 4rem;
-  border: 1px solid #e3e3e3;
+  border: 1px solid $border-grey;
   position: absolute;
   margin: 6rem auto;
   left: 0;
@@ -92,7 +92,6 @@ h2 {
     display: block;
     text-align: center;
     padding-bottom: 2rem;
-
   }
   .err {
     display: none;
@@ -147,7 +146,7 @@ h2 {
   width: 260px;
   height: 100%;
   background-color: $white;
-  border-right: 1px solid #e3e3e3;
+  border-right: 1px solid $border-grey;
   position: absolute;
   left: 0;
   top: 0;
@@ -156,7 +155,7 @@ h2 {
     h2 {
       padding-bottom: 2rem;
       margin-bottom: 2rem;
-      border-bottom: 1px solid #e3e3e3;
+      border-bottom: 1px solid $border-grey;
     }
     h4 {
       text-transform: uppercase;
@@ -257,7 +256,7 @@ $msg-container-h: calc(100% - 8.3rem); // 8.3rem is height of input box
       padding: 1.5rem;
       border-radius: 4px;
       clear: both;
-      border: 1px solid #e3e3e3;
+      border: 1px solid $border-grey;
     }
     .their-msg {
       @extend .msg;
@@ -273,7 +272,7 @@ $msg-container-h: calc(100% - 8.3rem); // 8.3rem is height of input box
   }
   .input-section {
     bottom: 0;
-    border-top: 1px solid #e3e3e3;
+    border-top: 1px solid $border-grey;
     position: absolute;
     background-color: $white;
     padding: 2rem;
@@ -318,7 +317,7 @@ $msg-container-h: calc(100% - 8.3rem); // 8.3rem is height of input box
       height: 6rem;
       padding: 0rem 2rem;
       background-color: white;
-      border-bottom: 1px solid #e3e3e3;
+      border-bottom: 1px solid $border-grey;
       display: flex;
       align-items: center;
       justify-content: space-between;
