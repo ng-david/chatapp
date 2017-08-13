@@ -8,7 +8,7 @@ body {
   font-size: 1.6rem;
   line-height: 1.5;
   font-weight: 400;
-  overflow-x: hidden; }
+  max-height: 100vh; }
 
 button {
   font-size: 1.6rem;
@@ -103,6 +103,14 @@ h2 {
     margin-bottom: 1rem; }
   .login-modal button {
     width: 100%; }
+  @media (max-width: 767px) {
+    .login-modal {
+      padding: 2rem;
+      margin: 2rem auto; }
+      .login-modal .heading-logo {
+        width: 40px; }
+      .login-modal h1, .login-modal h2 {
+        font-size: 2rem; } }
 
 .overlay {
   position: fixed;
@@ -159,7 +167,8 @@ h2 {
         margin-right: 5px; }
   @media (max-width: 767px) {
     .sidebar {
-      right: -260px;
+      width: 0;
+      right: 0;
       left: auto;
       z-index: 1;
       -webkit-transition: .1s ease;
@@ -167,13 +176,16 @@ h2 {
       -o-transition: .1s ease;
       transition: .1s ease; }
       .sidebar.mobile-show {
+        width: 260px;
         display: block;
         z-index: 1;
-        -webkit-box-shadow: -10px 0px 80px 0px rgba(0, 0, 0, 0.05);
-        -moz-box-shadow: -10px 0px 80px 0px rgba(0, 0, 0, 0.05);
-        box-shadow: -10px 0px 80px 0px rgba(0, 0, 0, 0.05);
+        -webkit-box-shadow: -10px 0px 80px 0px rgba(0, 0, 0, 0.1);
+        -moz-box-shadow: -10px 0px 80px 0px rgba(0, 0, 0, 0.1);
+        box-shadow: -10px 0px 80px 0px rgba(0, 0, 0, 0.1);
         right: 0px; }
       .sidebar h2 {
+        display: none; }
+      .sidebar .active-count {
         display: none; } }
 
 .main {
