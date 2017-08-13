@@ -35,9 +35,11 @@
 <!-- Main -->
 <div id="sidebar" class="sidebar">
   <div class="content">
-    <img class="sidebar-logo" src="/img/chinglish.png" alt="">
-    <h2 class="logo">Chinglish <span class="zh-CN">中式英语</span></h2>
-    <h4>Active <span class="zh-CN">活性 </span><span class="active-count"></span></h4>
+    <div class="top">
+      <img class="sidebar-logo" src="/img/chinglish.png" alt="">
+      <h2 class="logo">Chinglish <span class="zh-CN">中式英语</span></h2>
+      <h4>Active <span class="zh-CN">活性 </span><span class="active-count"></span></h4>
+    </div>
     <ul id="activeUsers" class="active-users"></ul>
   </div>
 </div>
@@ -45,11 +47,11 @@
 <div class="main">
   <div class="top-bar">
     <div class="">
-      <h2 class="logo">Chinglish <span class="zh-CN">中式英语</span></h2>
+      <h2 class="logo" onclick="toggleSidebar()">Chinglish <span class="zh-CN">中式英语</span></h2>
     </div>
     <button class="btn-sidebar" onclick="toggleSidebar()">
       <span>
-        <img src="/img/people.jpg" alt="active-people">
+        <img src="/img/people.png" alt="active-people">
         <h4><span class="active-count"></span></h4>
       </span>
     </button>
@@ -57,7 +59,7 @@
   <ul id="messages" class="msg-container"></ul>
   <form id="chatInput" action="">
     <div class="input-section">
-      <input class="form-control" autocomplete="off" id="m">
+      <input class="form-control" autocomplete="on" id="m">
       <button class="btn-send">
         <img src="/img/send.png" alt="send">
       </button>

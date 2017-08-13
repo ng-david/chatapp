@@ -108,7 +108,10 @@ $(function() {
     $('#activeUsers').empty();
     for (const id in users) {
       const name = users[id].name;
-      $('#activeUsers').append($('<li class="name">').text(name));
+      const lang = users[id].lang;
+      $('#activeUsers').append($('<li class="user">').html(
+        "<span class=\"name\">" + name + "</span>" + "<span class=\"lang\">" + lang + "</span>"
+      ));
     }
   });
 });

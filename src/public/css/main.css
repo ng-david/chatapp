@@ -129,35 +129,45 @@ h2 {
 .sidebar {
   overflow-y: scroll;
   width: 260px;
-  height: 100%;
+  height: 100vh;
   background-color: #ffffff;
   border-right: 1px solid #e3e3e3;
   position: absolute;
   left: 0;
   top: 0; }
-  .sidebar .content {
-    padding: 2rem; }
-    .sidebar .content h2 {
-      padding-bottom: 2rem;
-      margin-bottom: 2rem;
-      border-bottom: 1px solid #e3e3e3; }
-    .sidebar .content h4 {
-      text-transform: uppercase;
-      font-weight: bold;
-      margin-bottom: 1rem; }
-    .sidebar .content ul {
-      list-style: none;
-      padding: 0; }
-    .sidebar .content .sidebar-logo {
+  .sidebar .content h2 {
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e3e3e3; }
+  .sidebar .content h4 {
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 1rem; }
+  .sidebar .content ul {
+    list-style: none;
+    padding: 0; }
+  .sidebar .content .top {
+    padding: 2rem 2rem 0; }
+    .sidebar .content .top .sidebar-logo {
       width: 40px;
       margin: 0 auto;
       margin-bottom: 2rem;
       display: block; }
-    .sidebar .content .active-count {
+    .sidebar .content .top .active-count {
       float: right; }
-    .sidebar .content .name, .sidebar .content .main .msg-container .my-name, .main .msg-container .sidebar .content .my-name, .sidebar .content .main .msg-container .their-name, .main .msg-container .sidebar .content .their-name {
-      margin-bottom: 1rem; }
-      .sidebar .content .name:before, .sidebar .content .main .msg-container .my-name:before, .main .msg-container .sidebar .content .my-name:before, .sidebar .content .main .msg-container .their-name:before, .main .msg-container .sidebar .content .their-name:before {
+  .sidebar .content .user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem; }
+    .sidebar .content .user:hover {
+      background-color: #f7f7f7; }
+    .sidebar .content .user .name, .sidebar .content .user .main .msg-container .my-name, .main .msg-container .sidebar .content .user .my-name, .sidebar .content .user .main .msg-container .their-name, .main .msg-container .sidebar .content .user .their-name {
+      max-width: 170px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden; }
+      .sidebar .content .user .name:before, .sidebar .content .user .main .msg-container .my-name:before, .main .msg-container .sidebar .content .user .my-name:before, .sidebar .content .user .main .msg-container .their-name:before, .main .msg-container .sidebar .content .user .their-name:before {
         content: '';
         display: inline-block;
         width: 1rem;
@@ -165,24 +175,22 @@ h2 {
         height: 1rem;
         background-color: #3dd700;
         margin-right: 5px; }
+    .sidebar .content .user .lang {
+      color: #808080; }
   @media (max-width: 767px) {
     .sidebar {
-      width: 0;
-      right: 0;
+      width: 100%;
       left: auto;
       z-index: 1;
+      pointer-events: none;
+      opacity: 0;
       -webkit-transition: .1s ease;
       -moz-transition: .1s ease;
       -o-transition: .1s ease;
       transition: .1s ease; }
       .sidebar.mobile-show {
-        width: 260px;
-        display: block;
         z-index: 1;
-        -webkit-box-shadow: -10px 0px 80px 0px rgba(0, 0, 0, 0.1);
-        -moz-box-shadow: -10px 0px 80px 0px rgba(0, 0, 0, 0.1);
-        box-shadow: -10px 0px 80px 0px rgba(0, 0, 0, 0.1);
-        right: 0px; }
+        opacity: 1; }
       .sidebar h2 {
         display: none; }
       .sidebar .active-count {
@@ -267,12 +275,14 @@ h2 {
       .main .msg-container {
         height: calc(100vh - 14.3rem); }
       .main .top-bar {
+        color: #ffffff;
         position: relative;
         z-index: 2;
         height: 6rem;
         padding: 0rem 2rem;
         background-color: white;
         border-bottom: 1px solid #e3e3e3;
+        background-color: #e10000;
         display: flex;
         align-items: center;
         justify-content: space-between; }
@@ -280,10 +290,8 @@ h2 {
           background-color: transparent;
           border: none;
           outline: none; }
-          .main .top-bar .btn-sidebar:hover {
-            opacity: .6; }
           .main .top-bar .btn-sidebar:active {
-            opacity: 1; }
+            opacity: .6; }
         .main .top-bar h2, .main .top-bar h4 {
           font-weight: bold;
           margin: 0; }
@@ -293,4 +301,4 @@ h2 {
         .main .top-bar h4 {
           display: inline; }
         .main .top-bar .active-count {
-          color: #e10000; } }
+          color: #ffffff; } }
