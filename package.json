@@ -18,9 +18,9 @@
     "rimraf": "^2.6.1"
   },
   "scripts": {
-    "start": "nodemon -e js,html,handlebars src/ --exec babel-node",
+    "serve": "nodemon -e js,html,handlebars src/ --exec babel-node",
     "build": "rimraf build/ && babel src/ --out-dir build/ --ignore ./scss --copy-files",
-    "serve": "node build/index.js",
+    "start": "node build/index.js",
     "watch-css": "node-sass -w src/scss/main.scss src/public/css/main.css"
   }
 }
